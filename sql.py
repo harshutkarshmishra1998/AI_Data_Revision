@@ -4,7 +4,7 @@ import sqlite3
 import pandas as pd
 
 # CONFIG
-SQL_FILE = "query_1.sql"
+SQL_FILE = "query_2.sql"
 DEFAULT_DB_DIR = "db"
 
 
@@ -44,6 +44,7 @@ if not db_file_name:
     exit()
 
 DB_FILE = os.path.join(DEFAULT_DB_DIR, db_file_name)
+OUTPUT_FILE = "query_results.xlsx"
 
 print(f"Connecting to database: {DB_FILE}\n")
 
@@ -57,6 +58,9 @@ try:
         print(f"{statement}\n")
         
         df = pd.read_sql_query(statement, conn)
+        if os.path.exists(OUTPUT_FILE):
+            os.remove(OUTPUT_FILE)
+        df.to_excel("query_results.xlsx", index=False)
         
         print("===== QUERY RESULT =====")
         print(df)
