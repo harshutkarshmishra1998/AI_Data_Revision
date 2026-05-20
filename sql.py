@@ -4,7 +4,7 @@ import sqlite3
 import pandas as pd
 
 # CONFIG
-SQL_FILE = "query_2.sql"
+SQL_FILE = "query.sql"
 DEFAULT_DB_DIR = "db"
 
 
