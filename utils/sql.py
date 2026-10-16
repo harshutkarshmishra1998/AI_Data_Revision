@@ -1,10 +1,12 @@
 import os
 import re
 import sqlite3
+from pathlib import Path
 import pandas as pd
 
 # CONFIG
-SQL_FILE = "query.sql"
+PROJECT_ROOT = Path(__file__).parent.parent
+SQL_FILE = PROJECT_ROOT / "sql_query.sql"
 DEFAULT_DB_DIR = "db"
 
 
@@ -60,7 +62,7 @@ try:
         df = pd.read_sql_query(statement, conn)
         if os.path.exists(OUTPUT_FILE):
             os.remove(OUTPUT_FILE)
-        df.to_excel("query_results.xlsx", index=False)
+        df.to_excel("results/query_results.xlsx", index=False)
         
         print("===== QUERY RESULT =====")
         print(df)
