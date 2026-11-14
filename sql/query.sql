@@ -9,11 +9,11 @@
 USE superstore.db;
 
 -- 1. Find customers who bought same product multiple times
-    -- WITH customer_sales AS(
-    --     SELECT customer_name, product_name, ROW_NUMBER() OVER(PARTITION BY customer_id, product_id) AS sno
-    --     FROM orders
-    -- )
-    -- SELECT DISTINCT customer_name, product_name FROM customer_sales WHERE sno > 1
+    WITH customer_sales AS(
+        SELECT customer_name, product_name, ROW_NUMBER() OVER(PARTITION BY customer_id, product_id) AS sno
+        FROM orders
+    )
+    SELECT DISTINCT customer_name, product_name FROM customer_sales WHERE sno > 1
 
 
 -- 2. Find products bought together by same customer
@@ -71,15 +71,15 @@ USE superstore.db;
 
 
 -- 7. Rolling 3-month average sales
-WITH bucket AS (
-    SELECT order_year, order_month, SUM(sales) AS total_monthly_sales
-    FROM orders
-    GROUP BY order_month, order_year
-    ORDER BY order_year, order_month
-)
+-- WITH bucket AS (
+--     SELECT order_year, order_month, SUM(sales) AS total_monthly_sales
+--     FROM orders
+--     GROUP BY order_month, order_year
+--     ORDER BY order_year, order_month
+-- )
 
-SELECT order_year, order_month, AVG(total_monthly_sales) OVER(ORDER BY order_year, order_month ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS rolling_avg
-FROM bucket
+-- SELECT order_year, order_month, AVG(total_monthly_sales) OVER(ORDER BY order_year, order_month ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS rolling_avg
+-- FROM bucket
 
 
 -- Monthly revenue trend

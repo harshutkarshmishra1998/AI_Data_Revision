@@ -35,6 +35,7 @@ def csv_to_sqlite(csv_path, db_path=None, table_name=None):
 
 # Example usage
 if __name__ == "__main__":
-    csv_file = "subscription_info.csv"
+    csv_file = "csv/subscription_info.csv"
+    db_path = "db/subscription_info.db"
 
-    csv_to_sqlite(csv_file)
+    csv_to_sqlite(csv_file, db_path)

@@ -2,8 +2,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 
-# Project setup
-PROJECT_ROOT = Path(__file__).resolve().parents[0] # as you move inside as many folders increase the number (e.g. parents[1] for one level up, etc.)
+# Project Setup
+PROJECT_ROOT = Path(__file__).resolve().parents[1] # as you move inside as many folders increase the number (e.g. parents[1] for one level up, etc.)
 load_dotenv(PROJECT_ROOT / ".env")
 
 def require_env(key: str) -> str:
@@ -16,8 +16,10 @@ ENV_KEYS = {
     "LANGCHAIN_API_KEY": "LANGCHAIN_API",
     "LANGCHAIN_TRACING_V2": "LANGCHAIN_TRACING_V2",
     "LANGCHAIN_PROJECT": "LANGCHAIN_PROJECT",
+
     "OPENAI_API_KEY": "OPENAI_API",
     "GROQ_API_KEY": "GROQ_API",
+
     "NEO4J_URI": "NEO4J_URI",
     "NEO4J_USERNAME": "NEO4J_USERNAME",
     "NEO4J_PASSWORD": "NEO4J_PASSWORD",

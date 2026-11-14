@@ -6,7 +6,7 @@ import pandas as pd
 
 # CONFIG
 PROJECT_ROOT = Path(__file__).parent.parent
-SQL_FILE = PROJECT_ROOT / "sql_query.sql"
+SQL_FILE = PROJECT_ROOT / "sql/query.sql"
 DEFAULT_DB_DIR = "db"
 
 
@@ -60,9 +60,9 @@ try:
         print(f"{statement}\n")
         
         df = pd.read_sql_query(statement, conn)
-        if os.path.exists(OUTPUT_FILE):
-            os.remove(OUTPUT_FILE)
-        df.to_excel("results/query_results.xlsx", index=False)
+        # if os.path.exists(OUTPUT_FILE):
+        #     os.remove(OUTPUT_FILE)
+        # df.to_excel("results/query_results.xlsx", index=False)
         
         print("===== QUERY RESULT =====")
         print(df)

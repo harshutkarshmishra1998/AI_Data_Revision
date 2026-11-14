@@ -3,3 +3,7 @@ openpyxl
 dotenv
 pyspark
 pathlib
+scikit-learn
+matplotlib
+statsmodels
+pmdarima
