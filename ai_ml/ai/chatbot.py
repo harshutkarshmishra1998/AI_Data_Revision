@@ -6,7 +6,7 @@ template = "You are a helpful assistant that answers questions about the world."
 
 user_question = "What is the capital of France?"
 
-llm = ChatGroq(model="openai/gpt-oss-20b", temperature=0.7)
+llm = ChatGroq(model=utils.api_keys._loaded["LLM"], temperature=0.7)
 
 prompt = ChatPromptTemplate.from_messages(
     [
@@ -27,7 +27,7 @@ print(response.content)
 # from langchain_community.chat_message_histories import ChatMessageHistory
 # from langchain_core.runnables.history import RunnableWithMessageHistory
 
-# llm = ChatGroq(model="openai/gpt-oss-20b", temperature=0.7)
+# llm = ChatGroq(model=utils.api_keys._loaded["LLM"], temperature=0.7)
 
 # prompt = ChatPromptTemplate.from_messages(
 #     [
